@@ -1,21 +1,13 @@
 import express from "express";
 import cors from "cors";
+import { testConnection } from "./db.js";
+import { charactersRouter } from "./characters/CharactersRouter.js";
 
 const app = express();
 app.use(cors());
 
-app.get("/", (req, res) => {
-  res.send("Hello World test");
-});
+app.use(express.json());
 
-app.get("/charaktere", (req, res) => {
-  res.send(
-    JSON.stringify([
-      { name: "Harald D Lonz", klasse: "Dieb" },
-      { name: "Gandalf", klasse: "Magier" },
-      { name: "Legolas", klasse: "Bogenschütze" },
-    ])
-  );
-});
+app.use("/characters", charactersRouter);
 
 app.listen(3000);
