@@ -1,6 +1,7 @@
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useGetCharaktereQuery } from "../store/enhancedApi";
+import CreateCharacter from "./CreateCharakters";
 
 export const Charakters = () => {
   const navigate = useNavigate();
@@ -18,6 +19,7 @@ export const Charakters = () => {
       >
         Starri
       </Button>
+      <CreateCharacter onCreated={() => window.location.reload()} />
     </>
   );
 };

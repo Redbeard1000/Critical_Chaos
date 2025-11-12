@@ -4,6 +4,7 @@ import "./App.css";
 import { Home } from "./pages/Home";
 import { Charakters } from "./pages/Charakters";
 import { Starri } from "./Charakters/Starri";
+import CreateCharacter from "./pages/CreateCharakters";
 
 function App() {
   return (
@@ -13,11 +14,16 @@ function App() {
           <Link to="/"></Link>
           <Link to="/Charakters"></Link>
           <Link to="/Charakters/Starri"></Link>
+          <Link to="/createCharakter">Create</Link>
         </div>
         <Routes>
           <Route path="/" element={<Home></Home>} />
           <Route path="/Charakters" element={<Charakters></Charakters>} />
           <Route path="/Charakters/Starri" element={<Starri></Starri>} />
+          <Route
+            path="/Charakters/Create"
+            element={<CreateCharacter></CreateCharacter>}
+          />
         </Routes>
       </Router>
     </>

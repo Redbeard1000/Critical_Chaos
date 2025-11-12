@@ -1,4 +1,5 @@
 import { query } from "../db.js";
+import type { CharacterInput } from "./CharakterTypes.js";
 
 export class CharactersRepository {
   async findAll() {
@@ -12,7 +13,7 @@ export class CharactersRepository {
     return results[0];
   }
 
-  async create(data: any) {
+  async create(data: CharacterInput) {
     const { name, klasse } = data;
     const results = await query(
       "INSERT INTO characters (name, klasse) VALUES ($1, $2) RETURNING *;",
