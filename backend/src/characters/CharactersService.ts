@@ -1,4 +1,5 @@
 import { CharactersRepository } from "./CharactersRepository.js";
+import type { CharacterInput } from "./CharakterTypes.js";
 
 export class CharactersService {
   constructor(private charactersRepository: CharactersRepository) {}

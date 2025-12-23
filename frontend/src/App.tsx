@@ -3,26 +3,31 @@ import "./App.css";
 
 import { Home } from "./pages/Home";
 import { Charakters } from "./pages/Charakters";
-import { Starri } from "./Charakters/Starri";
-import CreateCharacter from "./pages/CreateCharakters";
+import CreateCharacterPage from "./pages/CreateCharacter";
 
 function App() {
   return (
     <>
       <Router>
         <div>
-          <Link to="/"></Link>
-          <Link to="/Charakters"></Link>
-          <Link to="/Charakters/Starri"></Link>
-          <Link to="/createCharakter">Create</Link>
+          <Link to="/" className="navbar">
+            Home
+          </Link>{" "}
+          |{" "}
+          <Link to="/Charakters" className="navbar">
+            Charakters
+          </Link>{" "}
+          |{" "}
+          <Link to="/Charakters/Create" className="navbar">
+            Neuer Charakter
+          </Link>
         </div>
         <Routes>
           <Route path="/" element={<Home></Home>} />
           <Route path="/Charakters" element={<Charakters></Charakters>} />
-          <Route path="/Charakters/Starri" element={<Starri></Starri>} />
           <Route
             path="/Charakters/Create"
-            element={<CreateCharacter></CreateCharacter>}
+            element={<CreateCharacterPage></CreateCharacterPage>}
           />
         </Routes>
       </Router>

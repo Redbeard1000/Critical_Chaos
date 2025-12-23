@@ -4,4 +4,5 @@ export const enhancedApi = api.enhanceEndpoints({
   endpoints: {},
 });
 
-export const { useGetCharaktereQuery } = enhancedApi;
+export const { useGetCharactersQuery, useCreateCharacterMutation } =
+  enhancedApi;
