@@ -42,6 +42,12 @@ export const api = baseApi.injectEndpoints({
         method: "GET",
       }),
     }),
+    getCharacter: build.query<Character, string | number>({
+      query: (id) => ({
+        url: `/api/characters/${id}`,
+        method: "GET",
+      }),
+    }),
     createCharacter: build.mutation<Character, CharacterPayload>({
       query: (body) => ({
         url: "/api/characters",

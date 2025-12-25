@@ -1,5 +1,5 @@
 import { Button } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useGetCharactersQuery } from "../store/enhancedApi";
 
 export const Charakters = () => {
@@ -23,9 +23,14 @@ export const Charakters = () => {
         {data && (
           <ul style={{ listStyle: "none", padding: 0 }}>
             {data.map((c) => (
-              <li key={c.id}>
-                <strong>{c.name}</strong>
-                {c.klasse ? ` (${c.klasse})` : null}
+              <li key={c.id} style={{ marginBottom: 6 }}>
+                <Link
+                  to={`/Charakters/${c.id}`}
+                  style={{ textDecoration: "none" }}
+                >
+                  <strong>{c.name}</strong>
+                  {c.klasse ? ` (${c.klasse})` : null}
+                </Link>
               </li>
             ))}
           </ul>

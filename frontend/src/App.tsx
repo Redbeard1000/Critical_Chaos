@@ -4,6 +4,7 @@ import "./App.css";
 import { Home } from "./pages/Home";
 import { Charakters } from "./pages/Charakters";
 import CreateCharacterPage from "./pages/CreateCharacter";
+import CharacterDetails from "./pages/CharacterSheet";
 
 function App() {
   return (
@@ -25,6 +26,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Home></Home>} />
           <Route path="/Charakters" element={<Charakters></Charakters>} />
+          <Route
+            path="/Charakters/:id"
+            element={<CharacterDetails></CharacterDetails>}
+          />
           <Route
             path="/Charakters/Create"
             element={<CreateCharacterPage></CreateCharacterPage>}
