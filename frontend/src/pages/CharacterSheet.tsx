@@ -1,6 +1,7 @@
 import { Button, Card, CardContent, Divider, Stack } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
 import { useGetCharacterQuery } from "../store/enhancedApi";
+import "../styles/characters.css";
 
 export default function CharacterDetails() {
   const navigate = useNavigate();
@@ -10,65 +11,55 @@ export default function CharacterDetails() {
   });
 
   return (
-    <div style={{ maxWidth: 720, margin: "24px auto", padding: "0 16px" }}>
+    <div className="character-sheet">
       <Stack direction="row" spacing={2} alignItems="center" mb={2}>
         <Button variant="outlined" onClick={() => navigate(-1)}>
           Zurück
         </Button>
-        <h1 style={{ margin: 0 }}>Charakter</h1>
+        <h1 className="character-form-title">Charakter</h1>
       </Stack>
 
-      {isLoading && <div>Lade Charakter...</div>}
+      {isLoading && (
+        <div className="character-info-loading">Lade Charakter...</div>
+      )}
       {error && (
-        <div style={{ color: "red" }}>
+        <div className="character-info-error">
           Konnte Charakter nicht laden. Bitte erneut versuchen.
         </div>
       )}
       {!isLoading && !error && !data && (
-        <div style={{ color: "red" }}>Charakter nicht gefunden.</div>
+        <div className="character-info-not-found">
+          Charakter nicht gefunden.
+        </div>
       )}
 
       {data && (
         <Card elevation={1}>
-          <CardContent style={{ display: "grid", gap: 12 }}>
-            <div>
-              <div style={{ fontSize: 18, fontWeight: 700 }}>{data.name}</div>
+          <CardContent className="character-content">
+            <div className="character-header">
+              <div className="character-name">{data.name}</div>
               {data.klasse && (
-                <div style={{ color: "#666" }}>Klasse: {data.klasse}</div>
+                <div className="character-class">Klasse: {data.klasse}</div>
               )}
-              <div style={{ color: "#666" }}>ID: {data.id}</div>
             </div>
 
             <Divider />
 
-            <section style={{ display: "grid", gap: 8 }}>
-              <div style={{ fontWeight: 600 }}>Attribute</div>
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
-                  gap: 8,
-                }}
-              >
+            <section className="character-attributes">
+              <div className="character-attributes-title">Attribute</div>
+              <div className="attributes-grid">
                 <Stat label="Strength" value={data.strength} />
                 <Stat label="Dexterity" value={data.dexterity} />
                 <Stat label="Intelligence" value={data.intelligence} />
                 <Stat label="Empathy" value={data.empathy} />
-                <Stat label="Level" value={data.level} />
               </div>
             </section>
 
             <Divider />
 
-            <section style={{ display: "grid", gap: 8 }}>
-              <div style={{ fontWeight: 600 }}>Fertigkeiten</div>
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
-                  gap: 8,
-                }}
-              >
+            <section className="character-skills">
+              <div className="character-skills-title">Fertigkeiten</div>
+              <div className="skills-grid">
                 <Stat label="Kraft" value={data.might} />
                 <Stat label="Ausdauer" value={data.endurance} />
                 <Stat label="Nahkampf" value={data.melee} />
@@ -96,18 +87,9 @@ export default function CharacterDetails() {
 function Stat({ label, value }: { label: string; value?: number | null }) {
   if (value === null || typeof value === "undefined") return null;
   return (
-    <div
-      style={{
-        padding: "8px 10px",
-        border: "1px solid #e0e0e0",
-        borderRadius: 6,
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-      }}
-    >
-      <span>{label}</span>
-      <span style={{ fontWeight: 700 }}>{value}</span>
+    <div className="stat-box">
+      <span className="stat-label">{label}</span>
+      <span className="stat-value">{value}</span>
     </div>
   );
 }
