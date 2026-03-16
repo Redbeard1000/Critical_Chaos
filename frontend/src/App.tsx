@@ -3,6 +3,7 @@ import "./App.css";
 
 import { Home } from "./pages/Home";
 import { Charakters } from "./pages/Charakters";
+import { DM } from "./pages/DM";
 import CreateCharacterPage from "./pages/CreateCharacter";
 import CharacterDetails from "./pages/CharacterSheet";
 
@@ -15,6 +16,10 @@ function App() {
             Home
           </Link>{" "}
           |{" "}
+          <Link to="/DM" className="navbar">
+            Dungeon Master
+          </Link>{" "}
+          |{" "}
           <Link to="/Charakters" className="navbar">
             Charakters
           </Link>{" "}
@@ -25,6 +30,7 @@ function App() {
         </div>
         <Routes>
           <Route path="/" element={<Home></Home>} />
+          <Route path="/DM" element={<DM></DM>} />
           <Route path="/Charakters" element={<Charakters></Charakters>} />
           <Route
             path="/Charakters/:id"
