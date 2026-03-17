@@ -6,6 +6,7 @@ import { Charakters } from "./pages/Charakters";
 import { DM } from "./pages/DM";
 import CreateCharacterPage from "./pages/CreateCharacter";
 import CharacterDetails from "./pages/CharacterSheet";
+import { BattleMap } from "./pages/BattleMap";
 
 function App() {
   return (
@@ -20,6 +21,10 @@ function App() {
             Dungeon Master
           </Link>{" "}
           |{" "}
+          <Link to="/BattleMap" className="navbar">
+            Kampf Runden
+          </Link>{" "}
+          |{" "}
           <Link to="/Charakters" className="navbar">
             Charakters
           </Link>{" "}
@@ -31,6 +36,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home></Home>} />
           <Route path="/DM" element={<DM></DM>} />
+          <Route path="/BattleMap" element={<BattleMap></BattleMap>} />
           <Route path="/Charakters" element={<Charakters></Charakters>} />
           <Route
             path="/Charakters/:id"
