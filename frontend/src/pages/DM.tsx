@@ -2,8 +2,8 @@ import { useState } from "react";
 import {
   rollDice,
   DiceResult,
-  rollWind,
-  WindResult,
+  WheatherResult,
+  rollWheather,
 } from "../utils/diceRoller";
 import { Button } from "@mui/material";
 
@@ -11,16 +11,18 @@ import { DiceIcon } from "../icons/customIcons";
 
 export const DM = () => {
   const [result, setResult] = useState<DiceResult | null>(null);
-  const [windResult, setWindResult] = useState<WindResult | null>(null);
+
   const [diceType, setDiceType] = useState(20);
+  const [wheatherResult, setWheatherResult] = useState<WheatherResult | null>(
+    null,
+  );
 
   const handleRoll = () => {
     setResult(rollDice(1, diceType));
-    setWindResult(rollWind());
   };
 
-  const handleWindRoll = () => {
-    setWindResult(rollWind());
+  const handleWeatherRoll = () => {
+    setWheatherResult(rollWheather());
   };
 
   return (
@@ -28,21 +30,23 @@ export const DM = () => {
       <h1>Dungeon Master Schmiede</h1>
 
       <div>
-        Wind:
+        Wetter:
         <Button
           variant="outlined"
-          startIcon={<DiceIcon sx={{ fontSize: 100 }} />}
-          onClick={handleWindRoll}
+          startIcon={<DiceIcon sx={{ fontSize: 32 }} />}
+          onClick={handleWeatherRoll}
         >
           Würfeln
         </Button>
       </div>
 
-      {windResult && (
+      {wheatherResult && (
         <div>
-          <h3>W6 Ergebnis: {windResult.roll}</h3>
+          <h3>Wetter: </h3>
           <p>
-            <strong>{windResult.description}</strong>
+            Wind: {wheatherResult.wind.description} <br />
+            Schnee: {wheatherResult.snow.description} <br />
+            Kälte: {wheatherResult.cold.description}
           </p>
         </div>
       )}
