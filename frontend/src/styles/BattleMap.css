@@ -1,14 +1,81 @@
-.MuiCard-root.battle-card {
-  background-color: red !important;
-  border: 1px solid #d0d0d0;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+.battle-box {
+  padding: 16px;
 }
 
-.battle-card:hover {
-  background: black;
+.MuiCard-root.battle-card {
+  border: 1px solid #d0d0d0;
+  border-radius: 0px;
+  transition: box-shadow 0.3s ease;
+}
+
+.MuiCard-root.battle-card.battle-card-red {
+  background-color: red;
+}
+
+.MuiCard-root.battle-card.battle-card-green {
+  background-color: green;
+}
+
+.MuiCard-root.battle-card.battle-card-blue {
+  background-color: blue;
+}
+
+.MuiCard-root.battle-card.battle-card-dead {
+  background-color: black;
+  color: white;
+}
+
+.MuiCard-root.battle-card.glow-active {
+  box-shadow:
+    0 0 20px rgba(255, 251, 0, 1),
+    0 0 40px rgba(246, 255, 0, 0.9),
+    0 0 60px rgba(255, 255, 0, 0.7),
+    0 0 100px rgba(255, 200, 0, 0.5),
+    inset 0 0 20px rgba(255, 251, 0, 0.5);
+  transform: scale(1.02);
 }
 
 .battle-card .MuiCardContent-root {
   padding: 12px 16px;
+}
+
+.battle-card .MuiCardContent-root.battle-card-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  column-gap: 8px;
+  min-height: 52px;
+  padding: 12px 16px;
+}
+
+.battle-card-name {
+  font-size: 25px !important;
+  grid-column: 2;
+  justify-self: center;
+  margin: 0;
+  text-align: center;
+}
+
+.battle-card .MuiCardContent-root.battle-card-content > .MuiButton-root {
+  grid-column: 3;
+  justify-self: end;
+}
+
+.battle-card-name.is-dead {
+  text-decoration: line-through;
+}
+
+.Battle-Button {
+  background-color: red !important;
+  color: white !important;
+  position: fixed !important;
+  right: 24px !important;
+  bottom: 24px !important;
+  z-index: 10;
+}
+
+.battle-button-dead {
+  background-color: black !important;
+  color: white !important;
+  font-size: 20px !important;
 }
