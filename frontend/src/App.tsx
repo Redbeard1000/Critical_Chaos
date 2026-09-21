@@ -7,6 +7,8 @@ import { DM } from "./pages/DM";
 import CreateCharacterPage from "./pages/CreateCharacter";
 import CharacterDetails from "./pages/CharacterSheet";
 import { BattleMap } from "./pages/BattleMap";
+import { Monsters } from "./pages/Monsters";
+import CreateMonster from "./pages/CreateMonster";
 
 function App() {
   return (
@@ -32,6 +34,14 @@ function App() {
           <Link to="/Charakters/Create" className="navbar">
             Neuer Charakter
           </Link>
+          {" | "}
+          <Link to="/Monsters" className="navbar">
+            Monster
+          </Link>{" "}
+          |{" "}
+          <Link to="/Monsters/Create" className="navbar">
+            Neues Monster
+          </Link>
         </div>
         <Routes>
           <Route path="/" element={<Home></Home>} />
@@ -46,6 +56,8 @@ function App() {
             path="/Charakters/Create"
             element={<CreateCharacterPage></CreateCharacterPage>}
           />
+          <Route path="/Monsters" element={<Monsters></Monsters>} />
+          <Route path="/Monsters/Create" element={<CreateMonster />} />
         </Routes>
       </Router>
     </>

@@ -8,4 +8,6 @@ export const {
   useGetCharactersQuery,
   useGetCharacterQuery,
   useCreateCharacterMutation,
+  useGetMonstersQuery,
+  useCreateMonsterMutation,
 } = enhancedApi;

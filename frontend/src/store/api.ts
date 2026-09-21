@@ -34,6 +34,32 @@ export type Character = CharacterPayload & {
   id: number;
 };
 
+export type MonsterAttack = {
+  name: string;
+  description: string;
+  diceCount: number;
+};
+
+export type MonsterPayload = {
+  name: string;
+  strength?: number;
+  dexterity?: number;
+  armor?: number;
+  might?: number;
+  endurance?: number;
+  melee?: number;
+  crafting?: number;
+  stealth?: number;
+  sleightOfHand?: number;
+  move?: number;
+  ranged?: number;
+  attacks: MonsterAttack[];
+};
+
+export type Monster = MonsterPayload & {
+  id: number;
+};
+
 export const api = baseApi.injectEndpoints({
   endpoints: (build) => ({
     getCharacters: build.query<Character[], void>({
@@ -51,6 +77,19 @@ export const api = baseApi.injectEndpoints({
     createCharacter: build.mutation<Character, CharacterPayload>({
       query: (body) => ({
         url: "/api/characters",
+        method: "POST",
+        body,
+      }),
+    }),
+    getMonsters: build.query<Monster[], void>({
+      query: () => ({
+        url: "/api/monsters",
+        method: "GET",
+      }),
+    }),
+    createMonster: build.mutation<Monster, MonsterPayload>({
+      query: (body) => ({
+        url: "/api/monsters",
         method: "POST",
         body,
       }),
